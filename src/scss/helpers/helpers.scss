@@ -1,0 +1,60 @@
+body {
+  background-color: $white;
+}
+
+#stylesheet {
+  section {
+    margin-top: 10rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  section table {
+    width: 100%;
+  }
+
+  section > table {
+    margin-top: 3rem;
+  }
+  
+  tr:nth-child(even) {background-color: $white}
+  tr:not(.nested-row):nth-child(odd) {background-color: $offwhite}
+  th {
+    font-weight: 700;
+    text-align: center;
+  }
+  tr:not(.nested-row) td, th {
+    vertical-align: middle;
+    padding: 15px 30px;
+  }
+  td:first-child {
+    width: 150px !important;
+  }
+  td > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+.main-container {
+  max-width: 1280px;
+  padding: 0 2.5rem;
+  margin: 4rem auto;
+}
+
+@media screen and (max-width: 1920px) {}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 320px) {}

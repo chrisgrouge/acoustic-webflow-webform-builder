@@ -1,0 +1,186 @@
+body {
+  font-family: $primary-font;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $black;
+}
+
+h1, h2, h3, h4 {
+  font-family: $secondary-font;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 2.8125rem;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.33;
+}
+
+h5 {
+  font-size: 1.125rem;
+  line-height: 1.33;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $blue;
+}
+
+p {
+  margin: 0.75em 0;
+}
+
+* > p:last-child {
+  margin-bottom: 0;
+}
+
+a:not(.button) {
+  font-weight: 500;
+  color: $blue;
+  border-radius: 4px;
+
+  &:hover {  
+    --lightness: 29%;
+  }
+}
+
+a.button {
+  text-decoration: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% {  transform: rotate(359deg); }
+}
+
+a {
+  button {
+    font-family: $secondary-font;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: $blue;
+    border: 0;
+    color: $white;
+    padding: 0.625rem 1.375rem;
+    text-decoration: none;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      --lightness: 29%;
+      cursor: pointer;
+    }
+
+    /* loading the right arrow as a background image and changing the color from black to white. I used this url to generate the code: https://codepen.io/sosuke/pen/Pjoqqp */
+    &::after {
+      content: '';
+      background-image: url(./assets/right-arrow.svg);
+      background-size: 100%;
+      width: 0.875rem;
+      height: 0.875rem;
+      background-position: center right;
+      filter: $whitefilter;
+      margin-left: 0.625rem;
+    }
+  }
+
+  &.text {
+    border-bottom: 2px solid $blue;
+    padding-bottom: 2px;
+    button {
+      background-color: $white;
+      color: $blue;
+      padding: 0;
+
+      &::after {
+        filter: $bluefilter;
+      }
+      
+      &:hover::after {
+        filter: $bluefilterhover;
+      }
+    }
+
+    &:hover {
+      --lightness: 29%;
+    }
+  }
+
+  &.ghost {
+    button {
+      background-color: $white;
+      border: 2px solid $blue;
+      color: $blue;
+
+      &::after {
+        filter: $bluefilter;
+      }
+      
+      &:hover::after {
+        filter: $bluefilterhover;
+      }
+    }
+  }
+
+  &.loading {
+    button::after {
+      background-image: url(./assets/spinner.svg);
+      animation: spin 2s linear infinite;
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    button {
+      background-color: $gray;
+      color: $white;
+      border: 0px;
+      opacity: 0.5;
+
+      &::after, &:hover::after {
+        filter: $whitefilter;
+      }
+    }
+  }
+  &.text.disabled {
+    border-color: $gray;
+    
+    button {
+      background-color: $white;
+      color: $gray;
+
+      &::after, &:hover::after {
+        filter: $grayfilter;
+      }
+    }
+  }
+}
+
+a:not(.button):focus, button:focus {
+  outline: 2px solid $gray;
+  outline-offset: 2px;
+}
+
+a.text button:focus {
+  outline-offset: 6px;
+}
+
+a.disabled button:focus {
+  outline: 0;
+}

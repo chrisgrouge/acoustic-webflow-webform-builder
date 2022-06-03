@@ -1,0 +1,8 @@
+{% set href = href if href else '' %}
+{% set class = class if class else '' %}
+{% set text = text if text else 'Button Text' %}
+<a {% if href %}href="{{ href }}"{% endif %} class="button {{ class }}" {% if 'disabled' in class %}onclick="return false"{% endif %}>
+  <button>
+    {{ text }}
+  </button>
+</a>

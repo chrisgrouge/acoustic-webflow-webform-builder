@@ -1,0 +1,48 @@
+// * Variables go here
+
+// * Brand Colors
+
+// blue hover: --lightness: 29%;
+$blue: hsl(
+  var(--hue, 191),
+  var(--saturation, 70%),
+  var(--lightness, 53%)
+);
+// used to fill svg background image on ghost buttons
+$bluefilter: invert(80%) sepia(54%) saturate(2876%) hue-rotate(156deg) brightness(89%) contrast(92%);
+$bluefilterhover: invert(29%) sepia(20%) saturate(2844%) hue-rotate(151deg) brightness(100%) contrast(83%);
+
+// magenta hover: --lightness: 32%;
+$magenta: hsl(
+  var(--hue, 328),
+  var(--saturation, 84%),
+  var(--lightness, 47%)
+);
+// navy hover: --lightness: 10%;
+$navy: hsl(
+  var(--hue, 207),
+  var(--saturation, 79%),
+  var(--lightness, 17%)
+);
+
+// black hover: --lightness: 23%;
+$black: hsl(
+  var(--hue, 0),
+  var(--saturation, 0%),
+  var(--lightness, 12%)
+);
+
+$white: #ffffff;
+// used to fill svg background image on buttons
+$whitefilter: invert(100%) sepia(100%) saturate(0%) hue-rotate(216deg) brightness(103%) contrast(103%);
+
+$offwhite: #fafafa;
+$gray: #616d77;
+$grayfilter: invert(43%) sepia(6%) saturate(1005%) hue-rotate(165deg) brightness(94%) contrast(87%);
+$lightgray: #d2d7de;
+
+
+
+// * Typography
+$primary-font: 'Inter', sans-serif;
+$secondary-font: 'Work Sans', sans-serif;

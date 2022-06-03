@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <title>{%block title %}{% endblock %}</title>
+  <!-- style sheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- icons -->
+  <script src="https://kit.fontawesome.com/cb0f2bbd07.js" crossorigin="anonymous"></script>
+
+  <!-- fonts -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Work+Sans:wght@600&display=swap');
+  </style> 
+  
+  <!-- script -->
+  <script src="bundle.js" defer></script>
+</head>
+
+<body id="{%block pageID %}{% endblock %}">
+  {% include "header.njk" %}
+  {% block main %}
+  {% endblock %}
+  {% include "footer.njk" %}
+</body>
+</html>
