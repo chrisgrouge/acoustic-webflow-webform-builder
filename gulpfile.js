@@ -5,39 +5,40 @@ const {
   watch,
   parallel
 } = require("gulp");
-const rename = require("gulp-rename");
-const gulpif = require("gulp-if")
-const del = require("del");
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const nunjucksRender = require("gulp-nunjucks-render");
-const browserSync = require("browser-sync");
-const browserify = require("browserify");
-const babelify = require("babelify");
-const source = require("vinyl-source-stream");
-const buffer = require("vinyl-buffer");
-const sourcemaps = require("gulp-sourcemaps");
-const uglify = require("gulp-uglify");
-
+const rename = require("gulp-rename"),
+      gulpif = require("gulp-if"),
+      del = require("del"),
+      sass = require('gulp-sass'),
+      autoprefixer = require('gulp-autoprefixer'),
+      nunjucksRender = require("gulp-nunjucks-render"),
+      browserSync = require("browser-sync"),
+      browserify = require("browserify"),
+      babelify = require("babelify"),
+      source = require("vinyl-source-stream"),
+      buffer = require("vinyl-buffer"),
+      sourcemaps = require("gulp-sourcemaps"),
+      uglify = require("gulp-uglify");
 browserSync.create();
-
 sass.compiler = require('node-sass');
 
+// * Copys the images in the /src/assets and places them in the /dist/assets
 function copy() {
   return src('./src/assets/*.+(png|jpg|gif|jpeg|webp|svg)')
     .pipe(dest('./dist/assets/'))
 }
 
+// * Cleans dist folder
+function clean() {
+  return del(['dist/**'])
+}
+
 /* 
   * Standard Nunjucks script:
-  * - Run when the default `gulp` script is run
     - Looks for files in the './src/pages/' folder
-    - Runs it thorough the nunjucks function
-    - Inlines css
+    - Runs it thorough the nunjucks rendering
     - and outputs the results here './dist/'
     - streams changes to browser-sync instance invoked by the `gulp` script
 */
-
 function nunjucks() {
   return src('./src/pages/*.+(html|nunjucks|njk)')
     .pipe(
@@ -57,13 +58,7 @@ function sassFn() {
     .pipe(browserSync.stream());
 }
 
-// * Cleans dist folder
-function clean() {
-  return del(['dist/**'])
-}
-
 // * Processes JavaScript
-
 // JavaScript source file order (for concatenation)
 const jsSourceFile = 'index.js';
 const jsSourceFolder = './src/js/'
@@ -95,9 +90,6 @@ function processJS() {
     .pipe(dest('./dist/'))
 }
 
-
-
-
 // * Creates a browsersync instance
 function browser_sync(done) {
   browserSync.init({
@@ -120,7 +112,7 @@ function watchFiles() {
   watch('./src/assets/*.+(png|jpg|gif|jpeg)', copy)
 }
 
-// Default gulp variable
+// * Default gulp variable
 // * represents the `gulp` command
 const watchFn = series(clean, sassFn, processJS, nunjucks, copy, parallel(watchFiles, browser_sync));
 

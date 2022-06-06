@@ -1,11 +1,100 @@
-{% block title %}Resources{% endblock %}
-{% block pageID %}{% endblock %}
 {% extends "base.njk" %}
 {% block main %}
+<div class="container">
+  <div class="logo">
+    <div class="logocontainer"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.59 296.52"><path class="cls-1" d="M330.64,48.56H441.7a94.1,94.1,0,0,1,94.09,94.09v11a94.1,94.1,0,0,1-94.09,94.09H299.12l12.67-33.56H431.1c39.7,0,71.87-28.27,71.87-63.14V146c0-35.25-32.52-63.82-72.64-63.82H256.18a24.26,24.26,0,0,0-24.25,24.26h0a24.25,24.25,0,0,0,24.25,24.24h186a17,17,0,0,1,17,17v.91a17,17,0,0,1-17,17H277.68L227.8,296.41H438.87A141.72,141.72,0,0,0,580.59,154.69V143.25A143.24,143.24,0,0,0,437.34,0L330.63,0a24.26,24.26,0,0,0-24.26,24.39h0A24.27,24.27,0,0,0,330.64,48.56Z"/><rect class="cls-2" x="151.66" width="113.48" height="48.55" rx="24.28"/><rect class="cls-2" x="77.31" y="82.19" width="113.48" height="48.55" rx="24.28"/><path class="cls-2" d="M236.52,165.68H172.7A24.28,24.28,0,0,0,148.42,190h0a24.28,24.28,0,0,0,24.28,24.27H218Z"/><rect class="cls-3" y="165.68" width="113.48" height="48.55" rx="24.28"/></svg></div>
+    <h1>Acoustic Form Builder</h1>
+  </div>
+  <div class="canvas">
+    <div class="modulepicker">
+      <div class="form-overlay">
+        <form class="form-container"></form>
+        <button class="content-edit">Close</button>
+      </div>
 
-<div class="main-container">
-  <aside>this will be the left nav</aside>
-  <main>this is the main body</main>
+      <div class="modulecard" id="emailInput">
+        <i class="fas fa-at"></i>
+        <h2 class="modLabel">Email Input</h2>
+      </div>
+      
+      <div class="modulecard" id="textInput" >
+        <i class="fas fa-text"></i>
+        <h2 class="modLabel">Text Input</h2>
+      </div>
+
+      <div class="modulecard" id="telInput" >
+        <i class="fas fa-phone"></i>
+        <h2 class="modLabel">Phone Input</h2>
+      </div>
+      
+      <div class="modulecard" id="checkboxInput">
+        <i class="fas fa-check-square"></i>
+        <h2 class="modLabel">Checkbox</h2>
+      </div>
+      
+      <div class="modulecard" id="radioInput">
+        <i class="fas fa-dot-circle"></i>
+        <h2 class="modLabel">Radio</h2>
+      </div>
+      
+      <div class="modulecard" id="selectInput">
+        <i class="fas fa-list-alt"></i>
+        <h2 class="modLabel">Dropdown</h2>
+      </div>
+        
+      <div class="modulecard" id="textareaInput">
+        <i class="fas fa-comment-alt-lines"></i>
+        <h2 class="modLabel">Textarea</h2>
+      </div>
+    
+      <div class="modulecard" id="submitButton">
+        <i class="fas fa-chevron-circle-right"></i>
+        <h2 class="modLabel">Submit</h2>
+      </div>
+    
+      <div class="modulecard" id="hiddenInput">
+        <i class="fas fa-eye-slash"></i>
+        <h2 class="modLabel">Hidden Field</h2>
+      </div>
+    </div>
+    <div id="previewoutput" class="canvasarea">
+      <!-- Preview Email Output -->
+      <div id="outputPreview">
+        <div class="canvasWrapper">
+          <div id="preheader"><span class="hiddenField">Form post action required fields</span></div>
+
+          <!---------------- FORM MODULES START HERE ---------------->
+
+          <div>
+            <ul class="slides" id="outputPreviewBody"></ul>
+          </div>
+
+          <!---------------- FORM MODULES END HERE ---------------->
+
+          <!-- footer -->
+          <div>
+<ul class="slides" id="footer"></ul>
+            &nbsp;
+          </div>
+        </div>
+      </div>
+      <!-- End Preview Email Output -->
+      <div id="outputBodyHolding"></div>
+      <!-- Output Response Area -->
+      <div id="output">
+<div id="outputOpen">&lt;form method="post" class="AcousticForm form flex-column flex-align-start recaptcha-check-form" id="<span id="formID"></span>" name="<span id="formName"></span>" data-name="<span id="formDataName"></span>" aria-label="<span id="formAriaLabel"></span>" action="<span id="formAction"></span>" pageId="<span id="formPageId"></span>" siteId="<span id="formSiteId"></span>" parentPageId="<span id="formParentPageId"></span>"&gt;</div>
+    <div id="outputBody"></div>
+    <div id="outputClose">&lt;!-- DO NOT REMOVE HIDDEN FIELD sp_exp --&gt;
+      &lt;input type="hidden" name="sp_exp" value="yes"&gt;
+    &lt;/form&gt;</div>
+      </div>
+      <!-- End Output Response Area -->
+
+      <div class="clearCanvas" style="display: none;">
+        <button id="copyButton" class="button copyHTML">COPY HTML</button> <button id="clearoutput" class="button">CLEAR</button>
+        <br /><br /><span id="msg">&nbsp;</span>
+      </div>
+    </div>
+  </div>
 </div>
-
 {% endblock %}
