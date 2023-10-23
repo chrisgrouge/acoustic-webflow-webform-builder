@@ -6,20 +6,19 @@ const {
   parallel
 } = require("gulp");
 const rename = require("gulp-rename"),
-      gulpif = require("gulp-if"),
-      del = require("del"),
-      sass = require('gulp-sass'),
-      autoprefixer = require('gulp-autoprefixer'),
-      nunjucksRender = require("gulp-nunjucks-render"),
-      browserSync = require("browser-sync"),
-      browserify = require("browserify"),
-      babelify = require("babelify"),
-      source = require("vinyl-source-stream"),
-      buffer = require("vinyl-buffer"),
-      sourcemaps = require("gulp-sourcemaps"),
-      uglify = require("gulp-uglify");
+  gulpif = require("gulp-if"),
+  del = require("del"),
+  sass = require('gulp-sass')(require('sass')),
+  autoprefixer = require('gulp-autoprefixer'),
+  nunjucksRender = require("gulp-nunjucks-render"),
+  browserSync = require("browser-sync"),
+  browserify = require("browserify"),
+  babelify = require("babelify"),
+  source = require("vinyl-source-stream"),
+  buffer = require("vinyl-buffer"),
+  sourcemaps = require("gulp-sourcemaps"),
+  uglify = require("gulp-uglify");
 browserSync.create();
-sass.compiler = require('node-sass');
 
 // * Copys the images in the /src/assets and places them in the /dist/assets
 function copy() {
